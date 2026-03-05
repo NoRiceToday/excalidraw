@@ -26,10 +26,13 @@ Canonical source followed: `ai-agents-pipeline/docs/agents/adopting-in-another-r
   - Re-run `/oc implement` issue trigger after merging this workflow fix.
   - Confirm implement run can progress beyond OpenCode invocation and create a PR.
 
-## Additional runtime deviation under test
+## Additional runtime deviation tested and reverted
 
-- Deviation: Added `opencode github install` before `opencode github run` in all three AI workflows.
-- Reason: `opencode` exposes separate `github install` and `github run` commands; repeated implement failures suggest GitHub agent bootstrap may be missing on clean runners.
-- Validation plan:
-  - Re-run `/oc implement` after merging this change.
-  - Confirm implement stage no longer fails with `octoRest.rest` error.
+- Tested deviation: Added `opencode github install` before `opencode github run` in all three AI workflows.
+- Reason for test: `opencode` exposes separate `github install` and `github run` commands.
+- Validation result:
+  - In GitHub Actions, `opencode github install` entered an interactive app-install flow and blocked/fails in CI.
+  - Error observed: `Failed to detect GitHub app installation. Make sure to install the app for the 'NoRiceToday/excalidraw' repository.`
+- Decision:
+  - Reverted `opencode github install` from workflows.
+  - Keep app installation as a manual prerequisite outside CI.
