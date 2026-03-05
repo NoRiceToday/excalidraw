@@ -40,6 +40,8 @@ jobs:
         env:
           MODEL: opencode/big-pickle
           AGENT: reviewer
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           PROMPT: |
             Review this pull request thoroughly:
             - Check for code quality issues, potential bugs, and security concerns
