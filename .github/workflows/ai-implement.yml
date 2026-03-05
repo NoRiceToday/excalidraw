@@ -42,6 +42,8 @@ jobs:
           MODEL: opencode/big-pickle
           AGENT: implementer
           SKAINET_TOKEN: ${{ secrets.SKAINET_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: opencode github run
 
       - name: Label created PR as ai-implemented

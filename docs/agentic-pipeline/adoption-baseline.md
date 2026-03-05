@@ -13,3 +13,15 @@ Canonical source followed: `ai-agents-pipeline/docs/agents/adopting-in-another-r
 | Copy `mise.toml` and `lefthook.yml` | Copied both files into Excalidraw root | Pass |
 | Run `mise install` | Tools installed and validated with `actionlint` | Pass |
 | Hook wiring for existing Husky repo | Kept Husky as owner and invoked Lefthook via `.husky/pre-commit` | Pass |
+
+## Post-setup deviation applied for runtime compatibility
+
+- Deviation: Added explicit `GITHUB_TOKEN` and `GH_TOKEN` (from `PERSONAL_ACCESS_TOKEN`) to `opencode github run` steps in:
+  - `.github/workflows/ai-implement.yml`
+  - `.github/workflows/ai-review.yml`
+  - `.github/workflows/ai-rework.yml`
+- Reason: First live smoke test run failed in implement stage with:
+  - `undefined is not an object (evaluating 'octoRest.rest')`
+- Validation plan:
+  - Re-run `/oc implement` issue trigger after merging this workflow fix.
+  - Confirm implement run can progress beyond OpenCode invocation and create a PR.

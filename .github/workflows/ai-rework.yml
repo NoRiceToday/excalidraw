@@ -45,6 +45,8 @@ jobs:
         env:
           MODEL: opencode/big-pickle
           AGENT: reworker
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           PROMPT: |
             Address all review comments on this pull request.
             Read each comment carefully and implement the requested changes.
