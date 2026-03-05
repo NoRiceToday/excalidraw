@@ -25,3 +25,11 @@ Canonical source followed: `ai-agents-pipeline/docs/agents/adopting-in-another-r
 - Validation plan:
   - Re-run `/oc implement` issue trigger after merging this workflow fix.
   - Confirm implement run can progress beyond OpenCode invocation and create a PR.
+
+## Additional runtime deviation under test
+
+- Deviation: Added `opencode github install` before `opencode github run` in all three AI workflows.
+- Reason: `opencode` exposes separate `github install` and `github run` commands; repeated implement failures suggest GitHub agent bootstrap may be missing on clean runners.
+- Validation plan:
+  - Re-run `/oc implement` after merging this change.
+  - Confirm implement stage no longer fails with `octoRest.rest` error.
