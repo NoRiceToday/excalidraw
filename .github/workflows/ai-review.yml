@@ -36,6 +36,9 @@ jobs:
       - name: Add OpenCode to PATH
         run: echo "$HOME/.opencode/bin" >> $GITHUB_PATH
 
+      - name: Install OpenCode GitHub agent
+        run: opencode github install
+
       - name: Run OpenCode reviewer agent
         env:
           MODEL: opencode/big-pickle
